@@ -16,9 +16,9 @@ To install the official Python bindings, run the following command
 pip install openai
 ```
 
-Visit your **[API Keys](https://app.nextai.co.in)** page to retrieve the API key or you can even find API Key for the model deployed in model details you'll use API Key in your requests .
+Visit your ##[API Keys](https://app.nextai.co.in) page to retrieve the API key or you can even find API Key for the model deployed in model details you'll use API Key in your requests .
 
-All API requests should include your API key in an **`Authorization`** HTTP header as follows:
+All API requests should include your API key in an ##`Authorization` HTTP header as follows:
 
 ```python
 Authorization: Bearer NextAI_API_KEY
@@ -28,7 +28,7 @@ NextAI’s APIs are OpenAI API compatible to facilitate the migration from openA
 
 Make sure you set the base url to point to Next API endpoint of deployed model and set the API key provided to you.
 
-**Interact with your model**
+##Interact with your model
 
 ```python
 import os
@@ -52,7 +52,7 @@ chat_completion = client.chat.completions.create(
 
 ```
 
-**Interact with your model in Streaming** 
+##Interact with your model in Streaming
 
 ```python
 stream = client.chat.completions.create(
@@ -66,9 +66,9 @@ for chunk in stream:
 
 ```
 
-**JSON mode:**
+##JSON mode:
 
-you can set [response_format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-response_format) to **`{ "type": "json_object" }`** to enable JSON mode.
+you can set [response_format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-response_format) to ##`{ "type": "json_object" }` to enable JSON mode.
 
 ```python
 response = client.chat.completions.create(
@@ -82,7 +82,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-**RestAPI**
+##RestAPI
 
 cURL is another good tool for observing the output of the API
 
@@ -93,7 +93,7 @@ curl --location 'https://zephyr.nextai.co.in/v1/models' \
 
 *Note: URL provided is for example purpose use the model endpoint generated after model is deployed.*
 
-**Chat Completions:**
+##Chat Completions:
 
 ```bash
 curl --location 'https://zephyr.nextai.co.in/v1/chat/completions' \
@@ -107,7 +107,7 @@ curl --location 'https://zephyr.nextai.co.in/v1/chat/completions' \
 
 ---
 
-**Text Completions:**
+##Text Completions:
 
 ```bash
 curl --location 'https://zephyr.nextai.co.in/v1/completions' \
