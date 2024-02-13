@@ -1,4 +1,39 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: 'Requesting Quota Increase'
+description: ''
 ---
+
+ NextAI model deployment on cloud may encounter quota limitations when provisioning resources, especially for high-end GPUs. To request a quota increase, follow these steps:
+<AccordionGroup>
+<Accordion title="AWS (Amazon Web Services)">
+
+1. Go to the EC2 Quotas console.
+2. Select your desired region from the top right.
+3. Choose an EC2 instance type from the list.
+4. Click the quota name and select "Request quota increase."
+5. Enter the new quota value you need.
+6. Click "Request."
+
+</Accordion>
+<Accordion title="GCP (Google Cloud Platform)">
+1. Go to the Google Cloud Console Quota page.
+2. Filter by "Service: Compute Engine API."
+3. Select the desired limit name (e.g., NVIDIA-L4-GPUS-per-project-region).
+4. Check the region you want to change the quota for.
+5. Click "Edit Quotas" and set the new limit.
+6. Submit your request.
+</Accordion>
+
+<Accordion title="Azure">
+1. Visit Azure's quota page.
+2. Select "Request Increase" at the top.
+3. Choose "Compute-VM (cores-vCPUs) subscription limit increases" for Quota type.
+4. Follow the steps to specify details, including regions and VM series, and enter the new vCPU limit.
+5. Confirm your contact details.
+6. Review and create your request.
+</Accordion>
+</AccordionGroup>
+
+After submitting the request, the support team will review it. To increase your chances of approval, be responsive to any inquiry emails regarding how you plan to use the requested resources for your NextAI projects.
+
+These steps will help you request a quota increase for cloud resources, ensuring you have the necessary capacity to support your NextAI initiatives.
