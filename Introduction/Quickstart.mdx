@@ -1,4 +1,135 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: 'Quickstart Guide for NextAI'
+description: 'Begin your journey with NextAI in just a few minutes.'
 ---
+
+## Introduction
+Welcome to NextAI Documentation! 🎉 We're thrilled to have you here. This documentation is designed to guide you through the process of getting started with NextAI's open-source model inferencing, ensuring a smooth and straightforward experience. For those who prefer visual learning, we also offer concise video tutorials that range from 3-5 minutes. 🚀
+
+## Getting Started 📑
+NextAI allows you to interact with our API through HTTP requests from any programming language. We provide official bindings for Python and Node.js for your convenience.
+
+<AccordionGroup>
+<Accordion title="Setting Up">
+### Install Python Bindings:
+To begin, install the official Python bindings with the following command:
+```bash python
+pip install openai
+```
+
+### API Keys:
+To access our API, you'll need an API key. You can find your API key on your API Keys page or within the details of the model you've deployed. Include your API key in an Authorization HTTP header in all your API requests like so:
+
+```bash python
+Authorization: Bearer NextAI_API_KEY
+```
+
+### OpenAI API Compatibility:
+
+Our APIs are designed to be compatible with OpenAI's API, making it seamless for you to transition from OpenAI to NextAI with minimal code adjustments. Simply update the base URL to the NextAI endpoint of your deployed model and use the provided API key.
+
+## Interacting with Your Model
+Here's how you can interact with your model:
+```bash python
+import os
+from openai import OpenAI
+%env NEXTAI_API_KEY=#add your NextAI api key here
+
+client = OpenAI(
+    api_key=os.environ.get("NEXTAI_API_KEY"),
+    base_url = "add your end point URL"  #example: https://zephyr.nextai.co.in/v1
+)
+
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Tell me a hello world joke",
+        }
+    ],
+    model="add your model name", #example: zephyr-7b-alpha
+)
+```
+### Streaming Interaction:
+For streaming interactions, use the following code:
+
+```bash
+stream = client.chat.completions.create(
+    model="add your model name", #example: zephyr-7b-alpha
+    messages=[{"role": "user", "content": "Tell a hello world joke"}],
+    stream=True,
+)
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end="")
+```
+
+### JSON Mode:
+
+Enable JSON mode by setting the [response_format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-response_format) to { "type": "json_object" }:
+```bash python
+response = client.chat.completions.create(
+  model="YOUR_MODEL_NAME", # Example: zephyr-7b-alpha
+  response_format={ "type": "json_object" },
+  messages=[
+    {"role": "system", "content": "You are a helpful assistant designed to output JSON."},
+    {"role": "user", "content": "Who won the world series in 2023?"}
+  ]
+)
+print(response.choices[0].message.content)
+```
+
+## Using RestAPI with cURL
+cURL is another good tool for observing the output of the API
+
+### General API Interaction:
+```bash
+curl --location 'YOUR_MODEL_ENDPOINT_URL/models' \ 
+--header 'Authorization: Bearer YOUR_NEXTAI_API_KEY'
+```
+*Note: URL provided is for example purpose use the model endpoint generated after model is deployed.*
+
+### Chat Completions:
+```bash
+curl --location 'YOUR_MODEL_ENDPOINT_URL/chat/completions' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_NEXTAI_API_KEY' \
+--data '{
+    "model": "YOUR_MODEL_NAME", # Example: zephyr-7b-alpha
+    "messages": [{"role": "user", "content": "Hello! What is your name?"}]
+}'
+```
+### Text Completions:
+```bash
+curl --location 'YOUR_MODEL_ENDPOINT_URL/completions' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_NEXTAI_API_KEY' \
+--data '{
+    "model": "YOUR_MODEL_NAME", # Example: zephyr-7b-alpha
+    "prompt": "Once upon a time",
+    "max_tokens": 41,
+    "temperature": 0.5
+}'
+```
+*Note: When optional parameters are skipped, We follow openai defaults only.*
+
+### Embeddings:
+```bash
+curl --location 'YOUR_MODEL_ENDPOINT_URL/embeddings' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_NEXTAI_API_KEY' \
+--data '{
+    "model": "YOUR_MODEL_NAME", # Example: zephyr-7b-alpha
+    "input": "Hello world!"
+}'
+```
+*Note: Not all models support embeddings*
+</Accordion>
+</AccordionGroup>
+
+🧑‍💻Please refer this page for example prompt templates.
+
+🦙 Please refer this page for quick integration with Langchain, Llama index, RAG, Autogen etc..
+
+
+
