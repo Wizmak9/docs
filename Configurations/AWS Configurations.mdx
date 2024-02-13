@@ -1,0 +1,231 @@
+---
+title: 'AWS Configuration'
+description: 'Description of your new file.'
+---
+
+### AWS Permissions for NextAI
+
+To ensure secure and efficient use of AWS resources with NextAI, permissions should be minimized in two key areas:
+
+### 1. User Account
+
+This refers to individual accounts created by an administrator for each user. Each user account should have permissions tailored to its specific needs.
+
+### 2. IAM Role for EC2 Instances
+
+An IAM role should be designated for all EC2 instances created through NextAI. This role grants these instances the necessary permissions to interact with various AWS resources, such as reading and writing to S3 buckets or creating additional EC2 nodes.
+
+- This IAM role is common across all users under the same organization or root account.
+- If a user account has the ability to create IAM roles, NextAI can automatically generate this role, simplifying the setup process.
+
+### → Setting Up the User Account
+
+### Step 1: Accessing the IAM Dashboard
+
+- Go to the [IAM dashboard](https://us-east-1.console.aws.amazon.com/iamv2/home#/home) in your AWS console.
+- Click on the **Users** tab.
+
+<img
+  style={{ borderRadius: '0.5rem' }}
+  src=""
+/>
+
+- Select **Create users** and enter the desired user name.
+
+![Screenshot 2024-01-14 at 6.43.36 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/fa45601d-89c8-49b2-ad9c-504824c21dc2/Screenshot_2024-01-14_at_6.43.36_PM.png)
+
+- Click **Next**.
+
+### Step 2: Setting Permissions
+
+- In the **Permissions options** section, choose “Attach existing policies directly.”
+
+![Screenshot 2024-01-14 at 6.42.06 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/b0094bde-b136-43d5-b68c-65e7aad8e790/Screenshot_2024-01-14_at_6.42.06_PM.png)
+
+- Click on **Create Policy** to open a new window for creating an IAM policy.
+
+### Step 3: Creating an IAM Policy
+
+- Choose the “JSON” tab in the policy creation window.
+
+![Screenshot 2024-01-14 at 6.47.31 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/bdc53744-f1d0-40b2-8556-2bb9b98e1d1e/Screenshot_2024-01-14_at_6.47.31_PM.png)
+
+- Insert the below policy, replacing **`<account-ID-without-hyphens>`** with your AWS account ID. You can find your AWS account ID in the upper right corner of the AWS console.
+
+```bash jsx
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:*::image/ami-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": [
+                "arn:aws:ec2:*:<account-ID-without-hyphens>:instance/*",
+                "arn:aws:ec2:*:<account-ID-without-hyphens>:network-interface/*",
+                "arn:aws:ec2:*:<account-ID-without-hyphens>:subnet/*",
+                "arn:aws:ec2:*:<account-ID-without-hyphens>:volume/*",
+                "arn:aws:ec2:*:<account-ID-without-hyphens>:security-group/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:TerminateInstances",
+                "ec2:DeleteTags",
+                "ec2:StartInstances",
+                "ec2:CreateTags",
+                "ec2:StopInstances"
+            ],
+            "Resource": "arn:aws:ec2:*:<account-ID-without-hyphens>:instance/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateSecurityGroup",
+                "ec2:AuthorizeSecurityGroupIngress"
+            ],
+            "Resource": "arn:aws:ec2:*:<account-ID-without-hyphens>:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::<account-ID-without-hyphens>:role/**nextai-role**"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetInstanceProfile"
+            ],
+            "Resource": "arn:aws:iam::<account-ID-without-hyphens>:instance-profile/**nextai-role**"
+        },
+        {
+        "Effect": "Allow",
+        "Action": "iam:CreateServiceLinkedRole",
+        "Resource": "*",
+        "Condition": {
+            "StringEquals": {
+                "iam:AWSServiceName": "spot.amazonaws.com"
+            }
+        }
+        }
+    ]
+}
+```
+
+4. **Optional**: To enable `--clone-disk-from`, you need to add the following permissions to the policy above as well.
+
+```bash jsx
+{
+     "Effect": "Allow",
+     "Action": [
+         "ec2:CreateImage",
+         "ec2:CopyImage",
+         "ec2:DeregisterImage"
+     ],
+     "Resource": "*"
+ }
+```
+
+ 5. **Optional**: To enable opening ports on AWS cluster, you need to add the following permissions to the policy above as well.
+
+```bash jsx
+{
+     "Effect": "Allow",
+     "Action": [
+         "ec2:DeleteSecurityGroup",
+         "ec2:ModifyInstanceAttribute"
+     ],
+     "Resource": "arn:aws:ec2:*:<account-ID-without-hyphens>:*"
+ }
+```
+
+1. Click **Next: Tags** and follow the instructions to finish creating the policy. You can give the policy a descriptive name, such as nextai-policy and click on create policy.
+
+![Screenshot 2024-01-14 at 7.03.45 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/9ccda7a1-0f19-45f4-91cc-3fdf52ebed51/Screenshot_2024-01-14_at_7.03.45_PM.png)
+
+1. Go back to the previous window and click on the refresh button, and you can now search for the policy you just created.
+
+![Screenshot 2024-01-14 at 7.07.10 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/2df62cfb-e6ec-4b6c-a26e-f13e433b735c/Screenshot_2024-01-14_at_7.07.10_PM.png)
+
+8. **Optional**: If you would like to have your users access S3 buckets: You can additionally attach S3 access, such as the “AmazonS3FullAccess” policy.
+
+!https://skypilot.readthedocs.io/en/latest/_images/aws-s3-policy.png
+
+1. Click on **Next** and follow the instructions to finalize the user creation.
+
+With these steps, you are nearly set to enable users in your organisation to utilize NextAI with minimal permissions.
+
+**One additional step** is to establish a single IAM role, let's call it **`nextai-role`**, for all users in your organisation. There are two methods to do this:
+
+1. **Grant Additional Permissions**: Modify the permissions for the user you've just created to allow NextAI to automatically generate the IAM role using that user account. This can be done by adjusting the last two rules in the policy you created earlier. Amend them to include the necessary permissions for role creation and management.
+
+Note: you can find the policy in the **Policies** tab in the IAM dashboard. Click on the policy `nextai-policy` and click on the **Edit** to edit the policy.
+
+```bash jsx
+{
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:PassRole",
+
+                "iam:CreateRole",
+
+                "iam:AttachRolePolicy"
+
+            ],
+            "Resource": [
+                "arn:aws:iam::<account-ID-without-hyphens>:role/nextai-role"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetInstanceProfile",
+
+                "iam:CreateInstanceProfile",
+
+                "iam:AddRoleToInstanceProfile"
+
+            ],
+            "Resource": "arn:aws:iam::<account-ID-without-hyphens>:instance-profile/nextai-role"
+        }
+```
+
+2. Alternatively, you can create the `nextai-role` IAM role manually. The following section describes how to create the IAM role manually.
+
+***Note:** If you already have an IAM role called `nextai-role` in your AWS account, it is likely created by Nextai automatically, and you can skip this section.*
+
+### IAM Role Creation
+
+1. Click the “Roles” tab in the IAM console, and click on **Create role**.
+
+![Screenshot 2024-01-14 at 7.38.22 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/12f99427-7350-4d34-870e-f9fe3ee9fa4d/Screenshot_2024-01-14_at_7.38.22_PM.png)
+
+1. Select the following entity and common use cases and click **Next**.
+
+![Screenshot 2024-01-14 at 7.39.50 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/ae9537f5-2c0f-4eb7-a150-cd586433fa7e/Screenshot_2024-01-14_at_7.39.50_PM.png)
+
+1. Select the policy you created and click on **Next**
+
+![Screenshot 2024-01-14 at 7.41.44 PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bffea84c-0557-4609-a8bf-24c8a3449beb/a21d813d-63a0-48c2-a17f-af6726a23677/Screenshot_2024-01-14_at_7.41.44_PM.png)
+
+1. Click **Next**, and name your role “Nextai-role”. Click **Create role**.
+
+By following these steps, you can configure NextAI to deploy on private cloud, enabling more control over networking aspects and compliance with specific organizational policies or technical requirements.
