@@ -184,8 +184,10 @@ An IAM role should be designated for all EC2 instances created through NextAI. T
 With these steps, you are nearly set to enable users in your organisation to utilize NextAI with minimal permissions.
 
 **One additional step** is to establish a single IAM role, let's call it **`nextai-role`**, for all users in your organisation. There are two methods to do this:
-<AccordionGroup>
-<Accordion title="Grant Additional Permissions"> Modify the permissions for the user you've just created to allow NextAI to automatically generate the IAM role using that user account. This can be done by adjusting the last two rules in the policy you created earlier. Amend them to include the necessary permissions for role creation and management.
+
+
+## 1) Grant Additional Permissions:
+ Modify the permissions for the user you've just created to allow NextAI to automatically generate the IAM role using that user account. This can be done by adjusting the last two rules in the policy you created earlier. Amend them to include the necessary permissions for role creation and management.
 
 >Note: you can find the policy in the **Policies** tab in the IAM dashboard. Click on the policy `nextai-policy` and click on the **Edit** to edit the policy.
 
@@ -218,13 +220,11 @@ With these steps, you are nearly set to enable users in your organisation to uti
             "Resource": "arn:aws:iam::<account-ID-without-hyphens>:instance-profile/nextai-role"
         }
 ```
-</Accordion>
-<Accordion title="Alternate Method">
-2. Alternatively, you can create the `nextai-role` IAM role manually. The following section describes how to create the IAM role manually.
+## Alternate Method:
+ Alternatively, you can create the `nextai-role` IAM role manually. The following section describes how to create the IAM role manually.
 
 >Note: If you already have an IAM role called `nextai-role` in your AWS account, it is likely created by Nextai automatically, and you can skip this section.*
-</Accordion>
-</AccordionGroup>
+
 ### IAM Role Creation
 
 1. Click the “Roles” tab in the IAM console, and click on **Create role**.
