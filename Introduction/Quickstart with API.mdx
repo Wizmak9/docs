@@ -9,8 +9,6 @@ Welcome to NextAI Documentation! 🎉 We're thrilled to have you here. This docu
 ## Getting Started 📑
 NextAI allows you to interact with our API through HTTP requests from any programming language. We provide official bindings for Python and Node.js for your convenience.
 
-<AccordionGroup>
-<Accordion title="Setting Up">
 ### Install Python Bindings:
 To begin, install the official Python bindings with the following command:
 ```bash python
@@ -63,10 +61,8 @@ for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="")
 ```
-
 ### JSON Mode:
-
-Enable JSON mode by setting the [response_format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-response_format) to { "type": "json_object" }:
+You can set [response_format](https://platform.openai.com/docs/api-reference/chat/create#chat-create-response_format) to ("type": "json_object") enable JSON mode. 
 ```bash python
 response = client.chat.completions.create(
   model="YOUR_MODEL_NAME", # Example: zephyr-7b-alpha
@@ -78,19 +74,20 @@ response = client.chat.completions.create(
 )
 print(response.choices[0].message.content)
 ```
-
 ## Using RestAPI with cURL
 cURL is another good tool for observing the output of the API
 
-### General API Interaction:
-```bash
+<AccordionGroup>
+<Accordion title="General API Interaction">
+```bash bash
 curl --location 'YOUR_MODEL_ENDPOINT_URL/models' \ 
 --header 'Authorization: Bearer YOUR_NEXTAI_API_KEY'
 ```
 >Note: URL provided is for example purpose use the model endpoint generated after model is deployed.
+</Accordion>
 
-### Chat Completions:
-```bash
+<Accordion title="Chat Completions">
+```bash bash
 curl --location 'YOUR_MODEL_ENDPOINT_URL/chat/completions' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer YOUR_NEXTAI_API_KEY' \
@@ -99,8 +96,10 @@ curl --location 'YOUR_MODEL_ENDPOINT_URL/chat/completions' \
     "messages": [{"role": "user", "content": "Hello! What is your name?"}]
 }'
 ```
-### Text Completions:
-```bash
+</Accordion>
+
+<Accordion title="Text Completions">
+```bash bash
 curl --location 'YOUR_MODEL_ENDPOINT_URL/completions' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer YOUR_NEXTAI_API_KEY' \
@@ -112,9 +111,10 @@ curl --location 'YOUR_MODEL_ENDPOINT_URL/completions' \
 }'
 ```
 >Note: When optional parameters are skipped, We follow openai defaults only.
+</Accordion>
 
-### Embeddings:
-```bash
+<Accordion title="Embeddings">
+```bash bash
 curl --location 'YOUR_MODEL_ENDPOINT_URL/embeddings' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer YOUR_NEXTAI_API_KEY' \
@@ -130,4 +130,3 @@ curl --location 'YOUR_MODEL_ENDPOINT_URL/embeddings' \
 🧑‍💻Please refer this page for example prompt templates.
 
 🦙 Please refer this page for quick integration with Langchain, Llama index, RAG, Autogen etc..
-
