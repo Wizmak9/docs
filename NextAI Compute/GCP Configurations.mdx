@@ -37,7 +37,7 @@ Optional for TPUs (Tensor Processing Units):
 
 - **`roles/tpu.admin`**: Grants access to TPUs.
 
-```jsx
+```bash jsx
 roles/browser
 roles/compute.admin
 roles/iam.serviceAccountAdmin
@@ -54,21 +54,21 @@ use the new created user/principal for models deployments on nextAI following th
 
 **How to Create Role?**
 
-1. Go to GCP’s [IAM & Admin console](https://console.cloud.google.com/iam-admin/roles) and click on **Create Role**.
+1. Go to GCP's [IAM & Admin console](https://console.cloud.google.com/iam-admin/roles) and click on **Create Role**.
 
 <img
   src="/images/gcpimage3.png"
 />
 
-2. Give the role a descriptive name, such as `nextai-role`.
+2. Give the role a descriptive name, such as `nextai-role`.
 
 <img
   src="/images/gcpimage4.png"
 />
 
-1. Click **Add Permissions** and search for the following permissions and add them to the role
+3. Click **Add Permissions** and search for the following permissions and add them to the role
 
-```jsx
+```bash jsx
 compute.disks.create
 compute.disks.list
 compute.firewalls.create
@@ -107,7 +107,7 @@ roles/iam.serviceAccountTokenCreator
 
 4. **Optional**: If the user needs to access GCS buckets, you can additionally add the following permissions:
 
-```jsx
+```bash jsx
 storage.buckets.create
 storage.buckets.get
 storage.buckets.delete
@@ -118,52 +118,52 @@ storage.objects.get
 storage.objects.list
 ```
 
-1. **Optional**: To enable `--clone-disk-from`, you need to have the following permissions for the role as well:
+5. **Optional**: To enable `--clone-disk-from`, you need to have the following permissions for the role as well:
 
-```jsx
+```bash jsx
 compute.disks.useReadOnly
 compute.images.create
 compute.images.get
 compute.images.delete
 ```
 
-1. **Optional**: To enable opening ports on GCP cluster, you need to have the following permissions for the role as well:
+6. **Optional**: To enable opening ports on GCP cluster, you need to have the following permissions for the role as well:
 
-```jsx
+```bash jsx
 compute.instances.setTags
 compute.firewalls.list
 compute.firewalls.update
 ```
 
-1. **Optional**: If the user needs to use custom machine images with, you can additionally add the following permissions:
+7. **Optional**: If the user needs to use custom machine images with, you can additionally add the following permissions:
 
-```jsx
+```bash jsx
 compute.disks.get
 compute.disks.resize
 compute.images.get
 compute.images.useReadOnly
 ```
 
-1. Click **Create** to create the role.
-2. Go back to the “IAM” tab and click on **GRANT ACCESS**.
-3. Fill in the email address of the user in the “Add principals” section, and select `nextai-role` in the “Assign roles” section. Click **Save**
-4.  The user should receive an invitation to the project and should be able to setup service account in nextai cloud by following the instructions in below
+8. Click **Create** to create the role.
+9. Go back to the “IAM” tab and click on **GRANT ACCESS**.
+10. Fill in the email address of the user in the “Add principals” section, and select `nextai-role` in the “Assign roles” section. Click **Save**.
+11.  The user should receive an invitation to the project and should be able to setup service account in nextai cloud by following the instructions in below.
 
 **CREATE SERVICE ACCOUNT**
 
-1. Click the “Service Accounts” tab in the [IAM & Admin console](https://console.cloud.google.com/iam-admin/iam), and click on Create Service Account
+1. Click the “Service Accounts” tab in the [IAM & Admin console](https://console.cloud.google.com/iam-admin/iam), and click on Create Service Account.
 
 <img
   src="/images/gcpimage5.png"
 />
 
-1. Add any preferred service account name and set service account id to nextai-role and click create and continue.
+2. Add any preferred service account name and set service account id to nextai-role and click create and continue.
 
 <img
   src="/images/gcpimage6.png"
 />
 
-3. Select the `nextai-role` (or the name you set) created in the last section and click on **DONE**. You can also  Medium Permissions roles as described in the previous sections.
+3. Select the `nextai-role` (or the name you set) created in the last section and click on **DONE**. You can also  Medium Permissions roles as described in the previous sections.
 
 <img
   src="/images/gcpimage7.png"
