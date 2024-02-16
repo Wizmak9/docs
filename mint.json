@@ -68,6 +68,10 @@
         "api-reference/endpoint/create",
         "api-reference/endpoint/delete"
       ]
+    },
+    {
+        "group": "Introduction",
+        "pages": ["Introduction/Quickstart with API.mdx"]
     }
   ],
   "footerSocials": {
