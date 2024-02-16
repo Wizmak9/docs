@@ -70,8 +70,8 @@
       ]
     },
     {
-        "group": "Introduction",
-        "pages": ["Introduction/Quickstart-with-API","Introduction/Supported Models","Introduction/API Key for Premium Models"]
+      "group": "Introduction",
+      "pages": ["Introduction/Quickstart-with-API","Introduction/Supported Models","Introduction/API Key for Premium Models"]
     }
   ],
   "footerSocials": {
