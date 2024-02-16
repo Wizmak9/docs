@@ -71,7 +71,7 @@
     },
     {
         "group": "Introduction",
-        "pages": ["Introduction/Quickstart-with-API.mdx"]
+        "pages": ["Introduction/Quickstart-with-API","Introduction/Supported Models","Introduction/API Key for Premium Models"]
     }
   ],
   "footerSocials": {
