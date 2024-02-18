@@ -13,11 +13,6 @@
 
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
       "name": "Community",
       "icon": "slack",
       "url": "https://mintlify.com/community"
@@ -32,6 +27,17 @@
     {
       "group": "Introduction",
       "pages": ["Introduction/Welcome-to-NextAI","Introduction/Quickstart-with-API","Introduction/Supported-Models","Introduction/API-Key-for-Premium-Models"]
+    },
+    {
+      "group": "NextAI Compute",
+      "pages": ["NextAI Compute/AWS Configurations","NextAI Compute/GCP Configurations","NextAI Compute/Deploy Open Source Model","NextAI Compute/Deploy Quantised Model","NextAI Compute/Deploy on Private Cloud","NextAI Compute/Requesting Quota Increase"]
+    },
+    {
+      "group": "Pricing",
+      "pages": ["Pricing/NextAI Pricing"]
+    },{
+      "group": "Cookbook",
+      "pages": ["Cookbook/Integrating NextAI with Langchain: Enhanced Document Processing","Cookbook/Integrating NextAI with LlamaIndex: Enhanced Document Processing","Cookbook/Playing with AutoGen with NextAI: Exploring the Conversational Frontier","Cookbook/Unlocking the Power of Conversational AI: Talk to Websites with NextAI, LangChain, and ChromaDB"]
     }
   ],
   "footerSocials": {
