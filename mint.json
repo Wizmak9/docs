@@ -2,11 +2,11 @@
   "name": "NextAI",
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0764fa",
+    "primary": "#4e4feb",
     "light": "#0fa0fa",
-    "dark": "#0764fa",
+    "dark": "#4e4feb",
     "anchors": {
-      "from": "#0764fa",
+      "from": "#4e4feb",
       "to": "#0fa0fa"
     }
   }, 
@@ -47,7 +47,7 @@
       "pages": ["Pricing/NextAI Pricing"]
     },{
       "group": "Cookbook",
-      "pages": ["Cookbook/Integrating NextAI with Langchain: Enhanced Document Processing","Cookbook/Integrating NextAI with LlamaIndex: Enhanced Document Processing","Cookbook/Playing with AutoGen with NextAI: Exploring the Conversational Frontier","Cookbook/Unlocking the Power of Conversational AI: Talk to Websites with NextAI, LangChain, and ChromaDB"]
+      "pages": ["Cookbook/Integrating NextAI with Langchain: Enhanced Document Processing","Cookbook/Integrating NextAI with LlamaIndex: Enhanced Document Processing","Cookbook/Playing with AutoGen with NextAI: Exploring the Conversational Frontier","Cookbook/Unlocking the Power of Conversational AI: Talk to Websites with NextAI, LangChain, and ChromaDB"]
     }
   ],
   "footerSocials": {
