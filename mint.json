@@ -71,7 +71,7 @@
     },
     {
       "group": "Introduction",
-      "pages": ["Introduction/Quickstart-with-API","Introduction/Supported-Models","Introduction/API-Key-for-Premium-Models"]
+      "pages": ["Introduction/Welcome-to-NextAI","Introduction/Quickstart-with-API","Introduction/Supported-Models","Introduction/API-Key-for-Premium-Models"]
     }
   ],
   "footerSocials": {
