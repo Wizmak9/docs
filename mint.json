@@ -2,12 +2,12 @@
   "name": "NextAI",
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#0764fa",
+    "light": "#0fa0fa",
+    "dark": "#0764fa",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#0764fa",
+      "to": "#0fa0fa"
     }
   }, 
   "topbarLinks": [
