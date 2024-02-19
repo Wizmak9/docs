@@ -47,7 +47,7 @@
       "pages": ["Pricing/NextAI Pricing"]
     },{
       "group": "Cookbook",
-      "pages": ["Cookbook/Integrating NextAI with Langchain: Enhanced Document Processing","Cookbook/Integrating NextAI with LlamaIndex: Enhanced Document Processing","Cookbook/Playing with AutoGen with NextAI: Exploring the Conversational Frontier","Cookbook/Unlocking the Power of Conversational AI: Talk to Websites with NextAI, LangChain, and ChromaDB"]
+      "pages": ["Cookbook/LangChain", "Cookbook/LlamaIndex", "Cookbook/Autogen", "Cookbook/Websites"]
     }
   ],
   "footerSocials": {
