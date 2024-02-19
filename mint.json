@@ -57,7 +57,7 @@
       "pages": ["Pricing/NextAI Pricing"]
     },{
       "group": "Cookbook",
-      "pages": ["Cookbook/LangChain", "Cookbook/LlamaIndex", "Cookbook/Autogen", "Cookbook/Websites"]
+      "pages": ["Cookbook/[LangChain](https://medium.com/@tanmay4803/integrating-nextai-with-langchain-enhanced-document-processing-49185f4655b0)", "Cookbook/LlamaIndex", "Cookbook/Autogen", "Cookbook/Websites"]
     }
   ],
   "footerSocials": {
