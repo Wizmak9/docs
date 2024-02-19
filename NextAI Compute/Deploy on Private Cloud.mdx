@@ -1,4 +1,61 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: 'Deploy on Private Cloud'
+description: ''
 ---
+
+Welcome to NextAI, your go-to platform for seamless AI service management. This guide will walk you through the process of logging into your account, navigating to your profile, adding a new service account, and obtaining service account credentials for GCP and AWS.
+
+## **Step 1: Logging In**
+
+1. Visit [https://app.nextai.co.in](https://app.nextai.co.in/) to access the login page.
+2. Enter your registered email address and password in the provided fields.
+3. Click on the "Login" button to access your dashboard.
+
+## **Step 2: Navigating to Your Profile**
+
+1. Once logged in, locate the user profile icon at the top left corner of the dashboard.
+2. Click on the user profile icon to open a dropdown menu.
+3. Select "Profile" from the dropdown options to access your user profile page.
+
+## **Step 3: Adding a Service Account**
+
+1. In your profile page, you will find the "Add Service Account" option.
+2. Click on "Add Service Account" to open the service account form.
+3. Fill in the form with the following details:
+    - **Name of the Service Account:** Provide a unique name for easy identification.
+    - **Service Provider:** Select the service provider for your account (GCP or AWS).
+    - **Credentials:** Enter your service provider credentials in JSON format.
+
+## **Step 4: Obtaining Service Account Credentials**
+
+<AccordionGroup>
+<Accordion title="For Google Cloud Platform (GCP)">
+To obtain GCP service account credentials:
+
+1. Go to the Google Cloud Console.
+2. Navigate to "IAM & Admin" > "Service Accounts."
+3. Click on "Create Service Account" and follow the prompts to set up a new service account.
+4. **In section Grant this service account access** Create a role following this [link]() or give as owner to skip creating roles
+5. Once the service account is created, click on "Actions" > "Manage Key and Add key."
+6. Choose "JSON" as the key type and click "Create" to download the JSON key file.
+7. Use this JSON key file in the NextAI service account form under the "Credentials" field.
+8. NextAI will validate the key, ensuring it has all necessary permissions. If the validation is successful, we are ready to deploy services..
+</Accordion>
+<Accordion title="For Amazon Web Services (AWS)">
+To obtain AWS service account details:
+
+1. Sign in to the AWS Management Console.
+2. Navigate to "IAM" > "Users."
+3. Click on "Create User" and follow the prompts to create a new IAM user.
+4. During the user creation process, be sure to grant the necessary permissions for NextAI to access AWS services to setup this follow [AWS configuration]()
+5. Once a user is created, an "Access Key ID" and a "Secret Access Key" will be provided. If you already have a role, please click on the user and generate a key for third-party access.
+6. Use these details in the NextAI service account form under the "Credentials" field.
+7. NextAI will validate the key, ensuring all necessary permissions are in place. If the validation is successful, we are ready to deploy services.
+</Accordion>
+</AccordionGroup>
+
+## **Conclusion**
+
+By following these steps, you can easily add a service account to your NextAI profile and obtain the necessary credentials from GCP or AWS. This will enable you to seamlessly manage and integrate AI services with your NextAI account.
+
+If you encounter any issues or have questions, feel free to reach out to our support team for assistance.
