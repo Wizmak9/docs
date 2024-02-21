@@ -13,7 +13,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "team@nextai.co.in"
+      "url": "mailto:team@nextai.co.in"
     }
   ],
   "topbarCtaButton": {
@@ -24,13 +24,23 @@
   "anchors": [
     {
       "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "icon": "discord",
+      "url": "https://discord.gg/syaMajSJAJ"
     },
     {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "Youtube",
+      "icon": "youtube",
+      "url": "http://www.youtube.com/@nextai_official"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/company/nextaii"
+    },
+    {
+      "name": "Twitter",
+      "icon": "twitter",
+      "url": "https://twitter.com/nextai_official"
     }
   ],
   "navigation": [
