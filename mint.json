@@ -1,6 +1,7 @@
 {
   "name": "NextAI",
-  "favicon": "/favicon.svg",
+  "logo": "/images/nextia.png",
+  "favicon": "/images/nextia.png",
   "colors": {
     "primary": "#4e4feb",
     "light": "#0fa0fa",
@@ -13,7 +14,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:team@nextai.co.in"
+      "url": "https://discord.com/channels/1113036728555540533/1113036729088229463/1153244783905607713"
     }
   ],
   "topbarCtaButton": {
@@ -46,11 +47,11 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["Introduction/Welcome-to-NextAI","Introduction/Quickstart-with-API","Introduction/Supported-Models","Introduction/API-Key-for-Premium-Models"]
+      "pages": ["Introduction/Welcome-to-NextAI","Introduction/Quickstart-with-API","Introduction/Supported-Models"]
     },
     {
       "group": "NextAI Compute",
-      "pages": ["NextAI Compute/AWS Configurations","NextAI Compute/GCP Configurations","NextAI Compute/Deploy Open Source Model","NextAI Compute/Deploy Quantised Model","NextAI Compute/Deploy on Private Cloud","NextAI Compute/Requesting Quota Increase"]
+      "pages": ["NextAI Compute/Deploy Open Source Model","NextAI Compute/Deploy Quantised Model","NextAI Compute/Deploy on Private Cloud","NextAI Compute/AWS Configurations","NextAI Compute/GCP Configurations","NextAI Compute/Requesting Quota Increase","NextAI Compute/Metrics"]
     },
     {
       "group": "Pricing",
