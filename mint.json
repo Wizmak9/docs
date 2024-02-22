@@ -57,6 +57,9 @@
       "group": "Pricing",
       "pages": ["Pricing/NextAI Pricing"]
     },{
+      "group": "Finetuning",
+      "pages": ["Finetuning/Upload Dataset", "Finetuning/How to fine tune", "Finetuning/Deploy fine tuned model", "Finetuning/supported fine tuning"]
+    },{
       "group": "Cookbook",
       "pages": ["Cookbook/LangChain", "Cookbook/LlamaIndex", "Cookbook/Autogen", "Cookbook/Websites"]
     }
