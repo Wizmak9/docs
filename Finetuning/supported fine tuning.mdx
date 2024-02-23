@@ -1,0 +1,37 @@
+---
+title: 'Supported Fine Tuning'
+description: ''
+---
+We offer an array of finetuning methodologies designed to cater to the diverse needs of our clientele. These include: <br />
+**1. Adaptive LoRA Finetuning** <br />
+**2. Enhanced LoRA (ReLoRA) Finetuning** <br />
+**3. Comprehensive Finetuning** <br />
+
+Adaptive LoRA Finetuning is generally recommended, particularly for individuals new to the concept of finetuning. Below are the characteristics and considerations for each method:
+<AccordionGroup>
+<Accordion title="1. Adaptive LoRA Finetuning:">
+**Efficiency in Resources:** This method is less demanding on computational resources, facilitating accessibility. <br />
+**Preservation of Versatility:** It maintains the foundational versatility of the model while permitting task-specific adaptations. <br />
+**Expedited Training:** Adjusting a limited number of parameters results in quicker training cycles. <br />
+**Performance on Specific Tasks:** While it offers improvements, it might not reach the optimal performance for tasks vastly different from the model's original training data. <br />
+**Limitation on Enhancements:** Upgrades are confined to the segments where Adaptive LoRA is applied, which may not meet all task requirements. <br />
+**Economical Hosting:** The hosting expenses are comparable to those of the base model, offering a cost-effective solution. <br />
+</Accordion>
+<Accordion title="2. Enhanced LoRA (ReLoRA) Finetuning:">
+**Refined Customization:** This approach enhances Adaptive LoRA by fine-tuning parameters more delicately, offering a more precise adaptation to specific tasks without losing the model's broad applicability. <br />
+**Resource and Time Efficiency:** It maintains the resource and time efficiency characteristic of Adaptive LoRA, making it apt for a wide array of tasks. <br />
+**Intermediate Performance:** It provides a balance between Adaptive LoRA and Comprehensive Finetuning, enhancing task performance while retaining considerable versatility. <br />
+**Applicability:** Especially useful for tasks that necessitate a nuanced balance between general and specific knowledge. <br />
+**Cost and Hosting Benefits:** Similar to Adaptive LoRA in terms of cost-efficiency and hosting prerequisites, making it an appealing choice for numerous applications. <br />
+</Accordion>
+<Accordion title="3. Comprehensive Finetuning:">
+**Peak Task Performance:** This method allows for the adjustment of all the model's weights, leading to potentially superior performance for the specific task at hand. <br />
+**Maximum Flexibility:** It enables the model to diverge significantly from its base configuration, offering extensive customization possibilities. <br />
+**Higher Resource and Time Requirement:** Suitable for projects with substantial resource availability, as it demands more computational power and training time. <br />
+**Increased Overfitting Risk:** There's a greater risk of the model becoming overly specialized to the finetuning dataset. <br />
+**Versatility Trade-Off:** The significant modifications may compromise the model's effectiveness on tasks beyond the finetuned scope. <br />
+**Considerations for Hosting:** Hosting this model variant may incur higher costs due to the necessity for dedicated GPU instances, with considerations for initial load times and billing based on usage. <br />
+</Accordion>
+</AccordionGroup>
+
+NextAI is dedicated to equipping you with state-of-the-art auto train fine-tuning on optimised hardware to fully harness the capabilities of GenAI, tailored to your unique objectives
