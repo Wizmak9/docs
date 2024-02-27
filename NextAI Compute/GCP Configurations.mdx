@@ -28,7 +28,7 @@ When setting up permissions for users in GCP for NextAI, administrators have thr
 - **`roles/iam.serviceAccountTokenCreator` :** allows creation of token for auth
 - **`roles/iam.securityAdmin`**: If undesirable, you can initially include it to create necessary service accounts and then replace it with **`roles/iam.roleViewer`**.
 
-Optional for TPUs (Tensor Processing Units):
+**Optional for TPUs (Tensor Processing Units):**
 
 - **`roles/tpu.admin`**: Grants access to TPUs.
 
@@ -43,7 +43,7 @@ roles/storage.admin
 roles/iam.securityAdmin
 ```
 
-use the new created user/principal for models deployments on nextAI following the setup [instructions](https://app.nextai.co.in).
+Use the new created user/principal for models deployments on nextAI following the setup [instructions](https://app.nextai.co.in).
 
 ### **Advanced (more granular access)**
 
@@ -140,7 +140,7 @@ compute.images.useReadOnly
 10. Fill in the email address of the user in the “Add principals” section, and select `nextai-role` in the “Assign roles” section. Click **Save**
 11.  The user should receive an invitation to the project and should be able to setup service account in nextai cloud by following the instructions in below
 
-**CREATE SERVICE ACCOUNT**
+### CREATE SERVICE ACCOUNT
 
 1. Click the “Service Accounts” tab in the [IAM & Admin console](https://console.cloud.google.com/iam-admin/iam), and click on Create Service Account
 
